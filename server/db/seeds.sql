@@ -3,7 +3,7 @@ VALUES  ("Admin"),
         ("Front of House"),
         ("Back of House");
 
-INSERT INTO roles (name, job, salary, department_id)
+INSERT INTO roles (title, salary, department_id)
 VALUES  ("Assistant Manager", 70000, 1),
         ("Bartender", 45000, 1), 
         ("Bookkeeper", 120000, 1),
@@ -53,38 +53,38 @@ VALUES  ("Agnes", "Rouvas", 1, 12),
         ("Stef", "Liberakakis", 4, 15),
         ("Titus", "Portokalos", 4, 15);
 
-INSERT INTO menu(food_item)
-VALUES  ("Appetizers"),
-        ("Main Courses"),
-        ("Dessert")
-        ("Alcohol");
+-- INSERT INTO menu(food_item)
+-- VALUES  ("Appetizers"),
+--         ("Main Courses"),
+--         ("Dessert")
+--         ("Alcohol");
 
-INSERT INTO item(name, stock, price, menu_id)
-VALUES  ("Aegean Grapes", 10, 32.00, 4),
-        ("BCE Baklava", 10, 10.00, 3),
-        ("Babylonian Loukoumades", 7, 8.99, 3),
-        ("Balos Brew", 10, 9.00, 4),
-        ("Beta Fish Sticks", 20, 12.50, 1),
-        ("Bronze Age IPA", 3, 7.00, 4),
-        ("Colossus Stuffed Peppers", 14, 11.50, 2),
-        ("Epic Falafel Sandwich", 5, 14.99, 2),
-        ("Eureka Riesling", 8, 25.00, 4),
-        ("Gorge Watermelon Feta Salad", 9, 8.50, 1)
-        ("Gyro of the Gods", 13, 14.99, 1),
-        ("Hades’ Lemon Roasted Potatoes", 7, 9.99, 1),
-        ("Homer’s Hummus", 12, 12.99, 1),
-        ("“I’m Spartacus!” Salmon Burger", 1, 15.50, 2),
-        ("Kappa Halva", 2, 11.50, 3),
-        ("Kudos to You Tahini Cookies", 5, 6.50, 3),
-        ("Neptune’s Toasted Pita Bread", 19, 5.99, 1),
-        ("OPA!", 14, 40.00, 4),
-        ("Orion’s Orzo Delight", 3, 10.00, 2),
-        ("Parthenon Pasta Salad", 7, 9.50, 1),
-        ("Plato’s Pilsner", 30, 5.50, 4),
-        ("Poseidon’s Seafood Platter", 11, 19.50, 2),
-        ("Round Earth Merlot", 5, 25.00, 4),
-        ("Saturnalia Sauvignon Blanc", 14, 20.00, 4),
-        ("Son of Zeus", 9, 19.99, 4),
-        ("Spanakopita Pi", 10, 13.50, 2);
-        ("Zeta Tzatziki Special", 12, 12.99, 1),
-        ("Zeus' Greek Salad", 11, 15.00, 2);
+-- INSERT INTO item(name, stock, price, menu_id)
+-- VALUES  ("Aegean Grapes", 10, 32.00, 4),
+--         ("BCE Baklava", 10, 10.00, 3),
+--         ("Babylonian Loukoumades", 7, 8.99, 3),
+--         ("Balos Brew", 10, 9.00, 4),
+--         ("Beta Fish Sticks", 20, 12.50, 1),
+--         ("Bronze Age IPA", 3, 7.00, 4),
+--         ("Colossus Stuffed Peppers", 14, 11.50, 2),
+--         ("Epic Falafel Sandwich", 5, 14.99, 2),
+--         ("Eureka Riesling", 8, 25.00, 4),
+--         ("Gorge Watermelon Feta Salad", 9, 8.50, 1)
+--         ("Gyro of the Gods", 13, 14.99, 1),
+--         ("Hades’ Lemon Roasted Potatoes", 7, 9.99, 1),
+--         ("Homer’s Hummus", 12, 12.99, 1),
+--         ("“I’m Spartacus!” Salmon Burger", 1, 15.50, 2),
+--         ("Kappa Halva", 2, 11.50, 3),
+--         ("Kudos to You Tahini Cookies", 5, 6.50, 3),
+--         ("Neptune’s Toasted Pita Bread", 19, 5.99, 1),
+--         ("OPA!", 14, 40.00, 4),
+--         ("Orion’s Orzo Delight", 3, 10.00, 2),
+--         ("Parthenon Pasta Salad", 7, 9.50, 1),
+--         ("Plato’s Pilsner", 30, 5.50, 4),
+--         ("Poseidon’s Seafood Platter", 11, 19.50, 2),
+--         ("Round Earth Merlot", 5, 25.00, 4),
+--         ("Saturnalia Sauvignon Blanc", 14, 20.00, 4),
+--         ("Son of Zeus", 9, 19.99, 4),
+--         ("Spanakopita Pi", 10, 13.50, 2);
+--         ("Zeta Tzatziki Special", 12, 12.99, 1),
+--         ("Zeus' Greek Salad", 11, 15.00, 2);

@@ -1,0 +1,90 @@
+INSERT INTO departments(name)
+VALUES  ("Admin"),
+        ("Front of House"),
+        ("Back of House");
+
+INSERT INTO roles (name, job, salary, department_id)
+VALUES  ("Assistant Manager", 70000, 1),
+        ("Bartender", 45000, 1), 
+        ("Bookkeeper", 120000, 1),
+        ("Busser", 12.00, 2), 
+        ("Cook", 50000, 3),
+        ("Dishwasher", 12.00, 3), 
+        ("Expeditor", 12.00, 3),
+        ("Food Runner", 12.00, 2), 
+        ("Head Chef", 60000, 3),
+        ("Hostess", 15.00, 2), 
+        ("Line Cook", 40000, 3),
+        ("Manager", 90000, 1), 
+        ("Owner", 120000, 1),
+        ("Server", 15.00, 2), 
+        ("Shift Supervisor", 52000, 2);
+
+INSERT INTO employees(first_name, last_name, role_id, manager_id)
+VALUES  ("Agnes", "Rouvas", 1, 12),
+        ("Alexa", "Spanos", 14, 15),
+        ("Amanada", "Mouskouri", 10, 15),
+        ("Ben", "Aniston", 2, 15),
+        ("Cassie", "Dio", 14, 15),
+        ("Demitri", "Roussos", 14, 15),
+        ("Fern", "Galifianakis", 15, 12),
+        ("Greg", "Dalaras", 13, NULL),
+        ("Jackson", "Onassis", 5, 9),
+        ("Jo", "Sifakis", 7, 9),
+        ("Lana", "Vissi", 8, 9),
+        ("Lee", "Dukakic", 11, 9),
+        ("Lenny", "Foureira",11, 9),
+        ("Leon", "King", 1, 12),
+        ("Les", "Baltsa", 12, 13),
+        ("Lia", "Kazan", 6, 9),
+        ("Lizzy", "Fey", 14, 15),
+        ("Marin", "Ella", 15, 12),
+        ("Matt", "Stevens", 6, 9),
+        ("Meg", "Delaras", 3, NULL),
+        ("Nick", "Kazantzakis", 5, 9),
+        ("Paris", "Alexiou", 10, 15),
+        ("Penny", "Delta", 10, 15),
+        ("Percy", "Mycale", 6, 9),
+        ("Phil", "Byzantium", 14, 15),
+        ("Phillip", "Pakis", 9, NULL),
+        ("Ricky", "Leandros", 2, 15),
+        ("Rita", "Callas", 7, 9),
+        ("Stan", "Cavafy", 8, 9),
+        ("Stef", "Liberakakis", 4, 15),
+        ("Titus", "Portokalos", 4, 15);
+
+INSERT INTO menu(food_item)
+VALUES  ("Appetizers"),
+        ("Main Courses"),
+        ("Dessert")
+        ("Alcohol");
+
+INSERT INTO item(name, stock, price, menu_id)
+VALUES  ("Aegean Grapes", 10, 32.00, 4),
+        ("BCE Baklava", 10, 10.00, 3),
+        ("Babylonian Loukoumades", 7, 8.99, 3),
+        ("Balos Brew", 10, 9.00, 4),
+        ("Beta Fish Sticks", 20, 12.50, 1),
+        ("Bronze Age IPA", 3, 7.00, 4),
+        ("Colossus Stuffed Peppers", 14, 11.50, 2),
+        ("Epic Falafel Sandwich", 5, 14.99, 2),
+        ("Eureka Riesling", 8, 25.00, 4),
+        ("Gorge Watermelon Feta Salad", 9, 8.50, 1)
+        ("Gyro of the Gods", 13, 14.99, 1),
+        ("Hades’ Lemon Roasted Potatoes", 7, 9.99, 1),
+        ("Homer’s Hummus", 12, 12.99, 1),
+        ("“I’m Spartacus!” Salmon Burger", 1, 15.50, 2),
+        ("Kappa Halva", 2, 11.50, 3),
+        ("Kudos to You Tahini Cookies", 5, 6.50, 3),
+        ("Neptune’s Toasted Pita Bread", 19, 5.99, 1),
+        ("OPA!", 14, 40.00, 4),
+        ("Orion’s Orzo Delight", 3, 10.00, 2),
+        ("Parthenon Pasta Salad", 7, 9.50, 1),
+        ("Plato’s Pilsner", 30, 5.50, 4),
+        ("Poseidon’s Seafood Platter", 11, 19.50, 2),
+        ("Round Earth Merlot", 5, 25.00, 4),
+        ("Saturnalia Sauvignon Blanc", 14, 20.00, 4),
+        ("Son of Zeus", 9, 19.99, 4),
+        ("Spanakopita Pi", 10, 13.50, 2);
+        ("Zeta Tzatziki Special", 12, 12.99, 1),
+        ("Zeus' Greek Salad", 11, 15.00, 2);

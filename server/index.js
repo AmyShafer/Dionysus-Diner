@@ -1,11 +1,30 @@
-const sql = require('./connection/config')
-const cTable = require('console.table');
+//const sql = require('./connection/config')
+const express = require('express')
+const dotenv = require('dotenv')
+const path = require('path')
+const routes = require('./routes')
+
+dotenv.config()
+const PORT = process.env.PORT || 3001;
+const app = express();
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(routes);
 
 
-sql.query("SELECT first_name, last_name, title, manager_id FROM employees INNER JOIN roles ON employees.role_id = roles.id", (err, results) => { console.log(cTable.getTable(results)) })
-sql.query("SELECT title, salary, name FROM roles INNER JOIN departments ON roles.department_id =departments.id", (err, results) => { console.log(cTable.getTable(results)) })
-sql.query("SELECT * FROM departments", (err, results) => { console.log(cTable.getTable(results)) })
-setTimeout(()=>{
-    process.exit()
-},1000)
+
+// Serve up static assets
+app.use('/images', express.static(path.join(__dirname, '../client/images')));
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+}
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
+app.listen(PORT,()=>console.log(`Now Listening on port: ${PORT}`))
+
 

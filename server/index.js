@@ -3,10 +3,18 @@ const express = require('express')
 const dotenv = require('dotenv')
 const path = require('path')
 const routes = require('./routes')
+const cors = require('cors')
 
 dotenv.config()
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+app.use(
+  cors({
+    origin:"http://localhost:3000",
+    methods:["GET", "POST", "PUT", "DELETE"],
+  })
+)
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

@@ -11,8 +11,7 @@ CREATE TABLE departments (
 CREATE TABLE roles (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(40),
-    /* is there a way to accept decimal and int */
-    salary DEC,
+    salary INT,
     department_id INT,
     FOREIGN KEY (department_id) REFERENCES departments(id)
 );
@@ -26,7 +25,17 @@ CREATE TABLE employees(
     FOREIGN KEY (role_id) REFERENCES roles(id)
 );
 
+CREATE TABLE menu(
+    id INT,
+    food_item VARCHAR(30) NOT NULL
+);
 
+CREATE TABLE item(
+ name VARCHAR(40) NOT NULL,
+ stock INT,
+ price INT, 
+ item_id INT
+);
 
 
 -- ALTER TABLE employees

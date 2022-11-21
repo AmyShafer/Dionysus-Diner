@@ -1,5 +1,4 @@
 const sql = require('../connection/config')
-const cTable = require('console.table');
 
 module.exports = {
   // Get all employees
@@ -9,7 +8,6 @@ module.exports = {
         if (err) {
           reject(res.status(500).json(err))
         } else {
-          console.log(cTable.getTable(results))
           resolve(res.json(results))
         }
       })
@@ -22,7 +20,6 @@ module.exports = {
         if (err) {
           reject(res.status(500).json(err))
         } else {
-          console.log(cTable.getTable(results))
           resolve(res.json(results))
         }
       })
@@ -35,11 +32,31 @@ module.exports = {
         if (err) {
           reject(res.status(500).json(err))
         } else {
-          console.log(cTable.getTable(results))
           resolve(res.json(results))
         }
       })
     })
   },
-
+  getMenuOptions(req, res) {
+    return new Promise((resolve, reject) => {
+      sql.query("SELECT * FROM menu", (err, results) => {
+        if (err) {
+          reject(res.status(500).json(err))
+        } else {
+          resolve(res.json(results))
+        }
+      })
+    })
+  },
+  getMenuItem(req,res) {
+    return new Promise((resolve, reject) => {
+      sql.query(`SELECT * FROM item WHERE item_id=${req.params.id}`, (err, results) => {
+        if (err) {
+          reject(res.status(500).json(err))
+        } else {
+          resolve(res.json(results))
+        }
+      })
+    })
+  }
 }

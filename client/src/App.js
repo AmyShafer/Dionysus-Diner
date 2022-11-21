@@ -21,43 +21,51 @@ function App() {
       .then((data) => setData(data))
       .catch((err) => console.log(err));
   }
-  
-  function tableHeader(){
-    if(type === "departments"){
-      return(
-        <tr>
-          <td>Id</td>
-          <td>Department</td>
-        </tr>
+
+  function tableHeader() {
+    if (type === "departments") {
+      return (
+        <div className='table'>
+          <tr>
+            <td>Id</td>
+            <td>Department</td>
+          </tr>
+        </div>
       )
     }
-    else if(type === "employees"){
-      return(
-        <tr>
-          <td>First Name </td>
-          <td>Last Name </td>
-          <td>Title</td>
-          <td>Manager id</td>
-        </tr>
+    else if (type === "employees") {
+      return (
+        <div className='table'>
+          <tr>
+            <td>First Name </td>
+            <td>Last Name </td>
+            <td>Title</td>
+            <td>Manager id</td>
+          </tr>
+        </div>
       )
     }
-    else if(type === "roles"){
-      return(
-        <tr>
-          <td>Title</td>
-          <td>Salary</td>
-          <td>Department</td>
-        </tr>
+    else if (type === "roles") {
+      return (
+        <div className='table'>
+          <tr>
+            <td>Title</td>
+            <td>Salary</td>
+            <td>Department</td>
+          </tr>
+        </div>
       )
     }
   }
 
   return (
     <div>
-      <h1>Select Data to View</h1>
+      <h1>Dionysus Diner DB</h1>
+      <h2>Select Data to View</h2>
       <button onClick={() => getData("departments")}>Departments</button>
       <button onClick={() => getData("employees")}>Employees</button>
       <button onClick={() => getData("roles")}>Roles</button>
+      <button onClick={() => getData("menu")}>Menu</button>
       {data !== '' ?
         <>
           {tableHeader()}

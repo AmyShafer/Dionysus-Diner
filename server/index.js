@@ -4,6 +4,13 @@ const dotenv = require('dotenv')
 const path = require('path')
 const routes = require('./routes')
 const cors = require('cors')
+const directory = require('./connection/directory')
+const menu = require('./connection/menu.js')
+let roles = directory.roles
+let employees = directory.employees
+let managers = directory.managers
+let menuItems = menu.food_item
+let orderOf = menu.name
 
 dotenv.config()
 const PORT = process.env.PORT || 3001;

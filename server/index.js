@@ -4,13 +4,6 @@ const dotenv = require('dotenv')
 const path = require('path')
 const routes = require('./routes')
 const cors = require('cors')
-const directory = require('./connection/directory')
-const menu = require('./connection/menu.js')
-let roles = directory.roles
-let employees = directory.employees
-let managers = directory.managers
-let menuItems = menu.food_item
-let orderOf = menu.name
 
 dotenv.config()
 const PORT = process.env.PORT || 3001;
@@ -40,6 +33,6 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-app.listen(PORT,()=>console.log(`Now Listening on port: ${PORT}`))
+app.listen(PORT,()=>console.log(`Order up on port: ${PORT}`))
 
 

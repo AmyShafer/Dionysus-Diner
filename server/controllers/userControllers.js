@@ -58,5 +58,39 @@ module.exports = {
         }
       })
     })
+  },
+  addEmployee(req, res) {
+    return new Promise((resolve, reject) => {
+      sql.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`, (err, results) => {
+        if (err) {
+          reject(res.status(500).json(err))
+        } else {
+          resolve(res.json(results))
+        }
+      })
+    })
+  },
+  updateEmployee(req, res) {
+    return new Promise((resolve, reject) => {
+      sql.query(`UPDATE employees SET WHERE role_id=${req.params.id}`, (err, results) => {
+        if (err) {
+          reject(res.status(500).json(err))
+        } else {
+          resolve(res.json(results))
+        }
+      })
+    })
+  },
+  removeEmployee(req, res) {
+    return new Promise((resolve, reject) => {
+      sql.query(`DELETE FROM employees WHERE employee_id=${req.params.id}`, (err, results) => {
+        if (err) {
+          reject(res.status(500).json(err))
+        } else {
+          resolve(res.json(results))
+        }
+      })
+    })
   }
 }
+

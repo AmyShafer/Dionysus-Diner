@@ -4,7 +4,8 @@ const {
   getRoles,
   getDepartments,
   getMenuOptions,
-  getMenuItem
+  getMenuItem,
+  deleteEntry,
 } = require('../../controllers/userControllers');
 
 // /api/diner/employees
@@ -15,8 +16,11 @@ router.route('/roles').get(getRoles);
 router.route('/departments').get(getDepartments);
 // /api/diner/menu
 router.route('/menu').get(getMenuOptions)
+// /api/diner/delete
+router.route('/delete').delete(deleteEntry)
 // /api/diner/menuItem
 router.route('/menuItem/:id').get(getMenuItem)
+
 
 
 module.exports = router;

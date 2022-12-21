@@ -17,7 +17,7 @@ CREATE TABLE roles (
 );
 
 CREATE TABLE employees(
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(40) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     role_id INT,
@@ -31,6 +31,7 @@ CREATE TABLE menu(
 );
 
 CREATE TABLE item(
+ id INT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
  name VARCHAR(40) NOT NULL,
  stock INT,
  price INT, 

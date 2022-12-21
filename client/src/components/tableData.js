@@ -24,6 +24,23 @@ function TableData(data) {
             .then((data) => setMenuData(data))
             .catch((err) => console.log(err));
     }
+    function deleteEntry(id, table) {
+        async function deleteEntryData(id, table) {
+            try {
+                let data = await fetch(`http://localhost:3001/api/diner/delete`, {
+                    method: "DELETE",
+                    headers: { "Content-type": "application/json" },
+                    body: JSON.stringify({ id: id, table: table })
+                }
+                )
+                return data.json()
+            } catch {
+                console.log("data failed to delete")
+            }
+        }
+        deleteEntryData(id, table)
+            .catch((err) => console.log(err));
+    }
     if (dataType === "departments") {
         return (
             <div className="table">
@@ -36,14 +53,18 @@ function TableData(data) {
     }
     else if (dataType === "employees") {
         return (
-            <div className="table">
-                <tr>
-                    <td >{data.row.first_name}</td>
-                    <td >{data.row.last_name}</td>
-                    <td >{data.row.title}</td>
-                    <td >{data.row.manager_id}</td>
-                </tr>
-            </div>
+            <>
+                <div className="table">
+                    <tr>
+                        <td >{data.row.first_name}</td>
+                        <td >{data.row.last_name}</td>
+                        <td >{data.row.title}</td>
+                        <td >{data.row.manager_id}</td>
+                        <td><button onClick={() => { deleteEntry(data.row.id, dataType) }} className="delete">x</button> </td>
+                    </tr>
+                </div>
+
+            </>
         )
     }
     else if (dataType === "roles") {
@@ -72,6 +93,7 @@ function TableData(data) {
                                 <td>Name </td>
                                 <td>Stock </td>
                                 <td>Price</td>
+                                <td>Delete</td>
                             </tr>
                         </div>
                         <>

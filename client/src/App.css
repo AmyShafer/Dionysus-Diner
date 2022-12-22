@@ -58,6 +58,9 @@ td{
   width:140px;
   text-align: left;
 }
+.editMenu{
+  display: block;
+}
 body {
   background-image: url("../../client/public/greekRest.png");
 }

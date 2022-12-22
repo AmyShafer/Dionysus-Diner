@@ -17,7 +17,7 @@ CREATE TABLE roles (
 );
 
 CREATE TABLE employees(
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(40) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     role_id INT,
@@ -31,29 +31,9 @@ CREATE TABLE menu(
 );
 
 CREATE TABLE item(
+ id INT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
  name VARCHAR(40) NOT NULL,
  stock INT,
  price INT, 
  item_id INT
 );
-
-
--- ALTER TABLE employees
--- ADD CONSTRAINT role_id
---   FOREIGN KEY (role_id)
---     REFERENCES roles(id)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
--- ADD CONSTRAINT manager_id
---   FOREIGN KEY (manager_id)
---     REFERENCES employees (id)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION;
-
--- ALTER TABLE roles
--- ADD CONSTRAINT department_id
---   FOREIGN KEY (department_id)
---     REFERENCES departments (id)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION;
-

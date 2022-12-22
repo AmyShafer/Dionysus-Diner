@@ -10,7 +10,7 @@ const {
   updateEmployee,
   updateDepartment,
   updateRole,
-  updateMenu
+  updateMenu,
   // updateStock
 } = require('../../controllers/userControllers');
 

@@ -21,6 +21,7 @@ function MenuTableData(data) {
     return (
         <div className="table">
             <tr>
+                <td>{data.row.id}</td>
                 <td >{data.row.name}</td>
                 <td >{data.row.stock}</td>
                 <td >${data.row.price}</td>

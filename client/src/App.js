@@ -1,87 +1,127 @@
 import './App.css';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import TableData from './components/tableData'
+import APIHelper from './helper'
 
 function App() {
+  const [departmentFormState, setDepartmentFormState] = useState({ id: '', department: '' });
+  const [employeeFormState, setEmployeeFormState] = useState({ id: '', firstName: '', lastName:'',roleId:'',managerId:'' });
+  const [roleFormState, setRoleFormState]=useState({id:'', title:'',salary:'',deptId:''})
+  const [menuFormState, setMenuFormState]=useState({id:'', name:'', stock:'',price:''})
   const [data, setData] = useState('')
   const [type, setType] = useState('')
   const [inputStyle, setInputStyle] = useState({ display: 'none' })
   const [inverseInputStyle, setInverseInputStyle] = useState({ display: 'unset' })
   const [optionSelect, setOptionSelect] = useState('')
 
-  function editFieldData(table){
-    if(table==="departments"){
-      return(
+  // html for edit forms
+  function editFieldData(table) {
+    if (table === "departments") {
+      return (
         <div>
-        <form>
-          <input defaultValue="ID"></input>
-          <input defaultValue="Department Name"></input>
-          <button type='submit'>Submit Edit</button>
-        </form>
+          <form>
+            <input onChange={handleDepartmentChange} id="id" type="number" name="id" placeholder='id' />
+            <input onChange={handleDepartmentChange} id="department" type="text" name="department" placeholder="Department Name" />
+            <button type='button' onClick={(e)=>APIHelper.editFormSubmit(e,"dept",departmentFormState,"","","")}>Submit Edit</button>
+          </form>
         </div>
       )
     }
-    if(table==="employees"){
-      return(
+    if (table === "employees") {
+      return (
         <div>
-        <form>
-          <input defaultValue="ID"></input>
-          <input defaultValue="First name"></input>
-          <input defaultValue="Last name"></input>
-          <input defaultValue="Roll ID"></input>
-          <input defaultValue="Manager ID"></input>
-          <button type='submit' onSubmit={()=>{console.log("")}}>Submit Edit</button>
-        </form>
+          <form>
+            <input onChange={handleEmployeeChange} id="id" type="number" name="id" placeholder="ID"/>
+            <input onChange={handleEmployeeChange} id="firstName" type="text" name="firstName" placeholder="First name"/>
+            <input onChange={handleEmployeeChange} id="lastName" type="text" name="lastName" placeholder="Last name"/>
+            <input onChange={handleEmployeeChange} id="roleId" type="number" name="roleId" placeholder="Role ID"/>
+            <input onChange={handleEmployeeChange} id="managerId" type="number" name="managerId" placeholder="Manager ID"/>
+            <button type='button' onClick={(e)=>APIHelper.editFormSubmit(e,"employee","",employeeFormState,"","")}>Submit Edit</button>
+          </form>
         </div>
       )
     }
-    if(table==="roles"){
-      return(
+    if (table === "roles") {
+      return (
         <div>
-        <form>
-          <input defaultValue="ID"></input>
-          <input defaultValue="Title"></input>
-          <input defaultValue="Salary (number only)"></input>
-          <input defaultValue="Department ID"></input>
-          <button type='submit' onSubmit={()=>{console.log("")}}>Submit Edit</button>
-        </form>
+          <form>
+            <input onChange={handleRoleChange} id="id" type="number" name="id" placeholder="ID"></input>
+            <input onChange={handleRoleChange} id="title" type="text" name="title" placeholder="Title"></input>
+            <input onChange={handleRoleChange} id="salary" type="number" name="salary" placeholder="Salary (number only)"></input>
+            <input onChange={handleRoleChange} id="deptId" type="number" name="deptId" placeholder="Department ID"></input>
+            <button type='submit' onClick={(e) => APIHelper.editFormSubmit(e,"role","","",roleFormState,"")}>Submit Edit</button>
+          </form>
         </div>
       )
     }
-    if(table==="menu"){
-      return(
+    if (table === "item") {
+      return (
         <div>
-        <form>
-          <input defaultValue="ID"></input>
-          <input defaultValue="Name"></input>
-          <input defaultValue="Stock"></input>
-          <input defaultValue="Price"></input>
-          <button type='submit' onSubmit={()=>{console.log("")}}>Submit Edit</button>
-        </form>
+          <form>
+            <input onChange={handleMenuChange} id="id" type="number" name="id" placeholder="ID"/>
+            <input onChange={handleMenuChange} id="name" type="text" name="name" placeholder="Name"/>
+            <input onChange={handleMenuChange} id="stock" type="number" name="stock" placeholder="Stock"/>
+            <input onChange={handleMenuChange} id="price" type="number" name="price" placeholder="Price"/>
+            <button type='button' onClick={(e) => APIHelper.editFormSubmit(e,"item","","","",menuFormState) }>Submit Edit</button>
+          </form>
         </div>
       )
     }
   }
-  function readSelect(e){
+
+  // sets field data from user input
+  const handleDepartmentChange = (event) => {
+    const { name, value } = event.target;
+    setDepartmentFormState({
+      ...departmentFormState,
+      [name]: value,
+    });
+  };
+  // sets field data from user input
+  const handleEmployeeChange = (event) => {
+    const { name, value } = event.target;
+    setEmployeeFormState({
+      ...employeeFormState,
+      [name]: value,
+    });
+  };
+  // sets field data from user input
+  const handleRoleChange = (event)=>{
+    const { name, value } = event.target;
+    setRoleFormState({
+      ...roleFormState,
+      [name]: value,
+    });
+  };
+  // sets field data from user input
+  const handleMenuChange = (event)=>{
+    const { name, value } = event.target;
+    setMenuFormState({
+      ...menuFormState,
+      [name]: value,
+    });
+  };
+
+  //reads current selection from option menu
+  function readSelect(e) {
     setOptionSelect(e.target.value)
   }
 
+  // hides tables or option menu
   function editVisibility(dataType) {
-    if ((dataType!=="departments"&& dataType!=="roles" && dataType!=="employees" && dataType!=="menu") &&inputStyle["display"] === 'none') {
-        setInputStyle({ display: 'unset' })
+    if ((dataType !== "departments" && dataType !== "roles" && dataType !== "employees" && dataType !== "menu") && inputStyle["display"] === 'none') {
+      setInputStyle({ display: 'unset' })
     } else {
-        setInputStyle({ display: 'none' })
+      setInputStyle({ display: 'none' })
     }
     if (inverseInputStyle["display"] === 'none') {
       setInverseInputStyle({ display: 'unset' })
-  } else if((dataType!=="departments"&& dataType!=="roles" && dataType!=="employees" && dataType!=="menu") &&inverseInputStyle["display"] === 'unset') {
+    } else if ((dataType !== "departments" && dataType !== "roles" && dataType !== "employees" && dataType !== "menu") && inverseInputStyle["display"] === 'unset') {
       setInverseInputStyle({ display: 'none' })
+    }
   }
-}
-function editData(){
-  editVisibility()
-}
+
+  //gets table data
   const getData = (dataType) => {
     async function fetchData() {
       try {
@@ -96,71 +136,32 @@ function editData(){
       .then((res) => res.json())
       .then((data) => setData(data))
       .catch((err) => console.log(err));
-    
-    console.log(data)
-    editVisibility(dataType)
-  }
 
-  function tableHeader() {
-    if (type === "departments") {
-      return (
-        <div className='table'>
-          <tr>
-            <td>Id</td>
-            <td>Department</td>
-          </tr>
-        </div>
-      )
-    }
-    else if (type === "employees") {
-      return (
-        <div className='table'>
-          <tr>
-            <td>First Name </td>
-            <td>Last Name </td>
-            <td>Title</td>
-            <td>Manager id</td>
-            <td>Delete</td>
-          </tr>
-        </div>
-      )
-    }
-    else if (type === "roles") {
-      return (
-        <div className='table'>
-          <tr>
-            <td>Title</td>
-            <td>Salary</td>
-            <td>Department</td>
-          </tr>
-        </div>
-      )
-    }
+    editVisibility(dataType)
   }
 
   return (
     <>
-    <div>
-      <h1>Dionysus Diner DB</h1>
-      <h2>Select Data to View</h2>
-      <button onClick={() => getData("departments")}>Departments</button>
-      <button onClick={() => getData("employees")}>Employees</button>
-      <button onClick={() => getData("roles")}>Roles</button>
-      <button onClick={() => getData("menu")}>Menu</button>
-      <button onClick={() => editData()}>Edit Food Items</button>
-      
-      {data !== '' ?
-        <div style={inverseInputStyle}>
-          {tableHeader()}
-          {data.map((row) => (
-            <TableData row={row} key={Math.random() + 1} type={type} />
+      <div>
+        <h1>Dionysus Diner DB</h1>
+        <h2>Select Data to View</h2>
+        <button onClick={() => getData("departments")}>Departments</button>
+        <button onClick={() => getData("employees")}>Employees</button>
+        <button onClick={() => getData("roles")}>Roles</button>
+        <button onClick={() => getData("menu")}>Menu</button>
+        <button onClick={() => editVisibility("editMenu")}>Edit Food Items</button>
+        {/* table display */}
+        {data !== '' ?
+          <div style={inverseInputStyle}>
+            {APIHelper.tableHeader(type)}
+            {data.map((row) => (
+              <TableData row={row} key={Math.random() + 1} type={type} />
             ))}
-        </div>
-        : ''}
-    </div>
-      {/* editmenu */}
+          </div>
+          : ''}
+      </div>
+      {/* edit option dropdown menu */}
       <div style={inputStyle}>
-        
         <select onChange={readSelect} id="db" name="db-tables">
           <option value="">--select option--</option>
           <option value="departments">departments</option>
@@ -169,7 +170,7 @@ function editData(){
           <option value="item">menu</option>
         </select>
         {editFieldData(optionSelect)}
-      
+
       </div>
     </>
   );

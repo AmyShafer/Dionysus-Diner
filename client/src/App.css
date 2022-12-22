@@ -61,3 +61,6 @@ td{
 .editMenu{
   display: block;
 }
+body {
+  background-image: url("../../client/public/greekRest.png");
+}

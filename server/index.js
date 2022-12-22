@@ -33,6 +33,6 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-app.listen(PORT,()=>console.log(`Now Listening on port: ${PORT}`))
+app.listen(PORT,()=>console.log(`Order up on port: ${PORT}`))
 
 

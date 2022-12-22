@@ -5,7 +5,13 @@ const {
   getDepartments,
   getMenuOptions,
   getMenuItem,
-  deleteEntry,
+  removeEntry,
+  addEmployee,
+  updateEmployee,
+  updateDepartment,
+  updateRole,
+  updateMenu
+  // updateStock
 } = require('../../controllers/userControllers');
 
 // /api/diner/employees
@@ -16,11 +22,23 @@ router.route('/roles').get(getRoles);
 router.route('/departments').get(getDepartments);
 // /api/diner/menu
 router.route('/menu').get(getMenuOptions)
-// /api/diner/delete
-router.route('/delete').delete(deleteEntry)
 // /api/diner/menuItem
-router.route('/menuItem/:id').get(getMenuItem)
+router.route('/menuItem/:id').get(getMenuItem);
+// /api/diner/delete
+router.route('/delete').delete(removeEntry)
+// /api/diner/addEmployee
+router.route('/employees').post(addEmployee);
+// /api/diner/updateEmployee
+router.route('/employees').put(updateEmployee);
 
+// // /api/diner/MenuItemSubtract
+// router.route('/menuItemSubtract').put(updateStock);
 
+// /api/diner/departments
+router.route('/departments').put(updateDepartment);
+// /api/diner/roles
+router.route('/roles').put(updateRole);
+// /api/diner/roles
+router.route('/menu').put(updateMenu);
 
 module.exports = router;

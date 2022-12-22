@@ -103,6 +103,28 @@ module.exports = {
       })
     })
   },
+  updateRole(req, res) {
+    return new Promise((resolve, reject) => {
+      sql.query(`UPDATE roles SET name="${req.body.dept}" WHERE id=${req.body.id} `, (err, results) => {
+        if (err) {
+          reject(res.status(500).json(err))
+        } else {
+          resolve(res.json(results))
+        }
+      })
+    })
+  },
+  updateMenu(req, res) {
+    return new Promise((resolve, reject) => {
+      sql.query(`UPDATE menu SET name="${req.body.dept}" WHERE id=${req.body.id} `, (err, results) => {
+        if (err) {
+          reject(res.status(500).json(err))
+        } else {
+          resolve(res.json(results))
+        }
+      })
+    })
+  },
 }
   // update stock
   // removeEmployee(req, res) {

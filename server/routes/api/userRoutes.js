@@ -38,7 +38,7 @@ router.route('/employees').put(updateEmployee);
 router.route('/departments').put(updateDepartment);
 // /api/diner/roles
 router.route('/roles').put(updateRole);
-// /api/diner/roles
+// /api/diner/menu
 router.route('/menu').put(updateMenu);
 
 module.exports = router;

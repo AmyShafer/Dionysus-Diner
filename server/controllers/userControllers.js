@@ -4,7 +4,7 @@ module.exports = {
   // Get all employees
   getEmployees(req, res) {
     return new Promise((resolve, reject) => {
-      sql.query("SELECT first_name, last_name, title, manager_id FROM employees INNER JOIN roles ON employees.role_id = roles.id", (err, results) => {
+      sql.query("SELECT employees.id, first_name, last_name, title, manager_id FROM employees INNER JOIN roles ON employees.role_id = roles.id ORDER BY first_name", (err, results) => {
         if (err) {
           reject(res.status(500).json(err))
         } else {
@@ -16,7 +16,7 @@ module.exports = {
   //get all roles
   getRoles(req, res) {
     return new Promise((resolve, reject) => {
-      sql.query("SELECT title, salary, name FROM roles INNER JOIN departments ON roles.department_id =departments.id", (err, results) => {
+      sql.query("SELECT roles.id, title, salary, name FROM roles INNER JOIN departments ON roles.department_id =departments.id", (err, results) => {
         if (err) {
           reject(res.status(500).json(err))
         } else {
@@ -59,6 +59,17 @@ module.exports = {
       })
     })
   },
+  removeEntry(req,res) {
+    return new Promise((resolve, reject) => {
+      sql.query(`DELETE FROM ${req.body.table} WHERE id=${req.body.id}`, (err, results) => {
+        if (err) {
+          reject(res.status(500).json(err))
+        } else {
+          resolve(res.json(results))
+        }
+      })
+    })
+  },
   addEmployee(req, res) {
     return new Promise((resolve, reject) => {
       sql.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (${req.body.first_name}, ${req.body.last_name}, ${req.body.role_id}, ${req.body.manager_id})`, (err, results) => {
@@ -81,9 +92,9 @@ module.exports = {
       })
     })
   },
-  removeEmployee(req, res) {
+  updateDepartment(req, res) {
     return new Promise((resolve, reject) => {
-      sql.query(`DELETE FROM employees WHERE employee_id=${req.params.id}`, (err, results) => {
+      sql.query(`UPDATE departments SET name="${req.body.dept}" WHERE id=${req.body.id} `, (err, results) => {
         if (err) {
           reject(res.status(500).json(err))
         } else {
@@ -92,17 +103,38 @@ module.exports = {
       })
     })
   },
-  // update stock
-  // removeEmployee(req, res) {
-  //   return new Promise((resolve, reject) => {
-  //     sql.query(`DELETE FROM employees WHERE employee_id=${req.params.id}`, (err, results) => {
-  //       if (err) {
-  //         reject(res.status(500).json(err))
-  //       } else {
-  //         resolve(res.json(results))
-  //       }
-  //     })
-  //   })
-  // }
+  removeEmployee(req, res) {
+    return new Promise((resolve, reject) => {
+      sql.query(`DELETE FROM employees WHERE employee_id=${req.params.id}`, (err, results) => {
+        if (err) {
+           reject(res.status(500).json(err))
+          } else {
+             resolve(res.json(results))
+          }
+      })
+    })
+  },
+  updateRole(req, res) {
+    return new Promise((resolve, reject) => {
+      sql.query(`UPDATE roles SET title="${req.body.title}", salary="${req.body.salary}", department_id="${req.body.deptId}" WHERE id=${req.body.id} `, (err, results) => {
+        if (err) {
+          reject(res.status(500).json(err))
+        } else {
+          resolve(res.json(results))
+        }
+      })
+    })
+  },
+  updateMenu(req, res) {
+    return new Promise((resolve, reject) => {
+      sql.query(`UPDATE item SET name="${req.body.name}", stock="${req.body.stock}", price="${req.body.price}" WHERE id=${req.body.id} `, (err, results) => {
+        if (err) {
+          reject(res.status(500).json(err))
+        } else {
+          resolve(res.json(results))
+        }
+      })
+    })
+  },
 }
 

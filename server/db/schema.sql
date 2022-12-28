@@ -5,7 +5,7 @@ USE restaurant_db;
 
 CREATE TABLE departments (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30)
+    dept_name VARCHAR(30)
 );
 
 CREATE TABLE roles (
@@ -32,7 +32,7 @@ CREATE TABLE menu(
 
 CREATE TABLE item(
  id INT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
- name VARCHAR(40) NOT NULL,
+ item_name VARCHAR(40) NOT NULL,
  stock INT,
  price INT, 
  item_id INT

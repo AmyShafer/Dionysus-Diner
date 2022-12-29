@@ -41,13 +41,6 @@ h1,h2{
   text-align: center;
 }
 
-.table{
-  width: 50vw;
-  margin-left: auto;
-  margin-right: auto;
-  border-style: double;
-  
-}
 .table-buttons{
   width: 50vw;
   margin-left: auto;
@@ -63,4 +56,69 @@ td{
 }
 body {
   background-image: url("../../client/public/greekRest.png");
+}
+.table-container{
+  display: block;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(186, 182, 174, 0.807);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+.table-row{
+  display: flex;
+  justify-content: center;
+}
+.select{
+  margin-top: 30px;
+  width:40vw !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+.navBar{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.delete-button{
+  border-radius: 20px;
+  color: white;
+  background-color: rgb(255, 97, 97);
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+}
+.menu-buttons{
+  margin-right: auto;
+  border: none;
+  outline: none;
+  background: var(--blue);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+}
+.edit-form-container{
+  margin-top: 15px;
+  width:30vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+.form-label{
+  display: block;
+  text-align: left;
+}
+.submit-btn{
+  color: rgb(23, 104, 253);
+  text-decoration: underline;
+}
+.submit-btn:hover{
+  color: #3c8aff;
 }

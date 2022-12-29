@@ -24,6 +24,7 @@ class APIHealper {
                 }
                 editDeptData(id, dept)
                     .catch((err) => console.log(err));
+                window.location.assign('/')
             }
         }
         else if (table === "employee") {
@@ -50,6 +51,7 @@ class APIHealper {
                 }
                 editEmployeeData(id, first, last, roleId, managerId)
                     .catch((err) => console.log(err));
+                window.location.assign('/')
             }
         }
         else if (table === "role") {
@@ -75,6 +77,7 @@ class APIHealper {
                 }
                 editRoleData(id, title, salary, deptId)
                     .catch((err) => console.log(err));
+                window.location.assign('/')
             }
         }
         else if (table === "item") {
@@ -100,6 +103,7 @@ class APIHealper {
                 }
                 editMenuData(id, name, stock, price)
                     .catch((err) => console.log(err));
+                window.location.assign('/')
             }
         }
     }
@@ -108,7 +112,7 @@ class APIHealper {
     tableHeader(type) {
         if (type === "departments") {
             return (
-                <div className='table'>
+                <div className='table-row'>
                     <tr>
                         <td>Id</td>
                         <td>Department</td>
@@ -118,7 +122,7 @@ class APIHealper {
         }
         else if (type === "employees") {
             return (
-                <div className='table'>
+                <div className='table-row'>
                     <tr>
                         <td>id</td>
                         <td>First Name </td>
@@ -132,7 +136,7 @@ class APIHealper {
         }
         else if (type === "roles") {
             return (
-                <div className='table'>
+                <div className='table-row'>
                     <tr>
                         <td>id</td>
                         <td>Title</td>

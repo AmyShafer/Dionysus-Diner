@@ -1,4 +1,4 @@
-INSERT INTO departments(name)
+INSERT INTO departments (dept_name)
 VALUES  ("Admin"),
         ("Front of House"),
         ("Back of House");
@@ -20,7 +20,7 @@ VALUES  ("Assistant Manager", 70000, 1),
         ("Server", 35000, 2), 
         ("Shift Supervisor", 52000, 2);
 
-INSERT INTO employees(first_name, last_name, role_id, manager_id)
+INSERT INTO employees (first_name, last_name, role_id, manager_id)
 VALUES  ("Agnes", "Rouvas", 1, 12),
         ("Alexa", "Spanos", 14, 15),
         ("Amanada", "Mouskouri", 10, 15),
@@ -53,13 +53,13 @@ VALUES  ("Agnes", "Rouvas", 1, 12),
         ("Stef", "Liberakakis", 4, 15),
         ("Titus", "Portokalos", 4, 15);
 
-INSERT INTO menu(food_item)
+INSERT INTO menu (food_item)
 VALUES  ("Appetizers"),
         ("Main Courses"),
         ("Dessert"),
         ("Alcohol");
 
-INSERT INTO item(name, stock, price, item_id)
+INSERT INTO item (item_name, stock, price, item_id)
 VALUES  ("Aegean Grapes", 10, 32.00, 4),
         ("BCE Baklava", 10, 10.00, 3),
         ("Babylonian Loukoumades", 7, 8.99, 3),

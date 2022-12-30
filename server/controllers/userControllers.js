@@ -151,7 +151,7 @@ module.exports = {
   },
   updateMenu(req, res) {
     return new Promise((resolve, reject) => {
-      sql.query(`UPDATE item SET name="${req.body.name}", stock="${req.body.stock}", price="${req.body.price}" WHERE id=${req.body.id} `, (err, results) => {
+      sql.query(`UPDATE item SET name="${req.body.name}", stock="${req.body.stock}", price="${req.body.price}" WHERE id=${req.body.id}`, (err, results) => {
         if (err) {
           reject(res.status(500).json(err))
         } else {

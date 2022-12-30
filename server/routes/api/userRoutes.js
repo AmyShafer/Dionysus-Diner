@@ -39,10 +39,6 @@ router.route('/roles').post(addRole);
 router.route('/item').post(addItem);
 // /api/diner/updateEmployee
 router.route('/employees').put(updateEmployee);
-
-// // /api/diner/MenuItemSubtract
-// router.route('/menuItemSubtract').put(updateStock);
-
 // /api/diner/departments
 router.route('/departments').put(updateDepartment);
 // /api/diner/roles

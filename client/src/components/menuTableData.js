@@ -17,15 +17,16 @@ function MenuTableData(data) {
         }
         deleteEntryData(id, table)
             .catch((err) => console.log(err));
+        window.location.assign('/')
     }
     return (
-        <div className="table">
+        <div className="table-row">
             <tr>
                 <td>{data.row.id}</td>
                 <td >{data.row.name}</td>
                 <td >{data.row.stock}</td>
                 <td >${data.row.price}</td>
-                <td><button onClick={() => { deleteEntry(data.row.id, "item") }} className="delete">x</button> </td>
+                <td><button onClick={() => { deleteEntry(data.row.id, "item") }} className="delete delete-button">x</button> </td>
             </tr>
         </div>
     )

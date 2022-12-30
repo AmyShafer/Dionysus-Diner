@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import MenuTableData from "./menuTableData";
+import Table from "react-bootstrap/Table"
+import "bootstrap/dist/css/bootstrap.min.css"
+
 
 function TableData(data) {
     let dataType = data.type
@@ -40,10 +43,11 @@ function TableData(data) {
         }
         deleteEntryData(id, table)
             .catch((err) => console.log(err));
+        window.location.assign('/')
     }
     if (dataType === "departments") {
         return (
-            <div className="table">
+            <div className="table-row">
                 <tr>
                     <td >{data.row.id}</td>
                     <td >{data.row.name}</td>
@@ -54,14 +58,14 @@ function TableData(data) {
     else if (dataType === "employees") {
         return (
             <>
-                <div className="table">
+                <div className="table-row">
                     <tr>
                         <td>{data.row.id}</td>
                         <td >{data.row.first_name}</td>
                         <td >{data.row.last_name}</td>
                         <td >{data.row.title}</td>
                         <td >{data.row.manager_id}</td>
-                        <td><button onClick={() => { deleteEntry(data.row.id, dataType) }} className="delete">x</button> </td>
+                        <td><button type="submit" onClick={() => { deleteEntry(data.row.id, dataType) }} className="delete delete-button">x</button> </td>
                     </tr>
                 </div>
 
@@ -70,7 +74,7 @@ function TableData(data) {
     }
     else if (dataType === "roles") {
         return (
-            <div className="table">
+            <div className="table-row">
                 <tr>
                     <td>{data.row.id}</td>
                     <td >{data.row.title}</td>
@@ -85,25 +89,27 @@ function TableData(data) {
             <>
                 <div className="table-buttons">
                     <tr >
-                        <td ><button onClick={() => getMenuData(data.row.food_item)}>{data.row.food_item}</button></td>
+                        <td ><button className="menu-buttons" onClick={() => getMenuData(data.row.food_item)}>{data.row.food_item}</button></td>
                     </tr>
                 </div>
                 {menuData ?
                     <>
-                        <div className="table">
-                            <tr>
-                                <td>id</td>
-                                <td>Name </td>
-                                <td>Stock </td>
-                                <td>Price</td>
-                                <td>Delete</td>
-                            </tr>
-                        </div>
+                        <Table className='table table-striped-columns'>
+                            <div className="table-row">
+                                <tr>
+                                    <td>id</td>
+                                    <td>Name </td>
+                                    <td>Stock </td>
+                                    <td>Price</td>
+                                    <td>Delete</td>
+                                </tr>
+                            </div>
                         <>
                             {menuData.map((row) => (
                                 <MenuTableData row={row} key={Math.random() + 1} />
                             ))}
                         </>
+                        </Table>
                     </>
                     : ''}
             </>

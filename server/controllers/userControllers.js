@@ -1,3 +1,5 @@
+
+
 const sql = require('../connection/config')
 
 module.exports = {
@@ -72,7 +74,40 @@ module.exports = {
   },
   addEmployee(req, res) {
     return new Promise((resolve, reject) => {
-      sql.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (${req.body.first_name}, ${req.body.last_name}, ${req.body.role_id}, ${req.body.manager_id})`, (err, results) => {
+      sql.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ("${req.body.first}", "${req.body.last}", "${req.body.roleId}", "${req.body.managerId}")`, (err, results) => {
+        if (err) {
+          reject(res.status(500).json(err))
+        } else {
+          resolve(res.json(results))
+        }
+      })
+    })
+  },
+  addDepartment(req, res) {
+    return new Promise((resolve, reject) => {
+      sql.query(`INSERT INTO departments (name) VALUES ("${req.name}")`, (err, results) => {
+        if (err) {
+          reject(res.status(500).json(err))
+        } else {
+          resolve(res.json(results))
+        }
+      })
+    })
+  },
+  addRole(req, res) {
+    return new Promise((resolve, reject) => {
+      sql.query(`INSERT INTO roles (title, salary, department_id) VALUES ("${req.body.title}", "${req.body.salary}", "${req.body.departmentId}")`, (err, results) => {
+        if (err) {
+          reject(res.status(500).json(err))
+        } else {
+          resolve(res.json(results))
+        }
+      })
+    })
+  },
+  addItem(req, res) {
+    return new Promise((resolve, reject) => {
+      sql.query(`INSERT INTO item (name, stock, price, item_id) VALUES ("${req.body.name}", "${req.body.stock}", "${req.body.price}", "${req.body.itemId}")`, (err, results) => {
         if (err) {
           reject(res.status(500).json(err))
         } else {
@@ -127,7 +162,7 @@ module.exports = {
   },
   updateMenu(req, res) {
     return new Promise((resolve, reject) => {
-      sql.query(`UPDATE item SET name="${req.body.name}", stock="${req.body.stock}", price="${req.body.price}" WHERE id=${req.body.id} `, (err, results) => {
+      sql.query(`UPDATE item SET name="${req.body.name}", stock="${req.body.stock}", price="${req.body.price}" WHERE id=${req.body.id}`, (err, results) => {
         if (err) {
           reject(res.status(500).json(err))
         } else {
@@ -135,6 +170,5 @@ module.exports = {
         }
       })
     })
-  },
+  }
 }
-

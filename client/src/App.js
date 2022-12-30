@@ -5,7 +5,6 @@ import APIHelper from './helper'
 import Table from "react-bootstrap/Table"
 import Select from "react-bootstrap/FormSelect"
 import Nav from "react-bootstrap/Nav"
-//import Input from "react-bootstrap/Input"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 

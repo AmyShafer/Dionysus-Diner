@@ -36,7 +36,7 @@ router.route('/departments').post(addDepartment);
 // /api/diner/addRole
 router.route('/roles').post(addRole);
 // /api/diner/addItem
-router.route('/item').post(addItem);
+router.route('/items').post(addItem);
 // /api/diner/updateEmployee
 router.route('/employees').put(updateEmployee);
 // /api/diner/departments

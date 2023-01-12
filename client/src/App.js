@@ -131,7 +131,143 @@ function App() {
     });
   };
 
-  //reads current selection from option menu
+  // html for adding data
+  function addNewData(table) {
+    if (table === "departments") {
+      return (
+        <div>
+          <form>
+          <div className="mb-3">
+            <label className="form-label">Department ID</label>
+            <input className="form-control" onChange={addNewDepartment} id="id" type="number" name="id" placeholder='id' />
+            <label className="form-label">Department Name</label>
+            <input className="form-control" onChange={addNewDepartment} id="department" type="text" name="department" placeholder="Department Name" />
+            <form onSubmit={this.handleSubmit}>
+              <label> New Department: <input type="text" value={this.state.value} onChange={this.handleChange} /></label>
+            <input type="submit" value="Add New Department" />
+            </form>
+            <button className='menu-buttons submit-btn' type='submit' onClick={(e) => APIHelper.addNewData(e, "dept", departmentFormState, "", "", "")}>Submit Edit</button>
+            </div>
+          </form>
+        </div>
+      )
+    }
+    if (table === "employees") {
+      return (
+        <div>
+          <form>
+            <div className="mb-3">
+            <label className="form-label">Employee ID</label>
+            <input className="form-control" onChange={addNewEmployee} id="id" type="number" name="id" placeholder="ID" />
+            <label className="form-label">First Name</label>
+            <input className="form-control" onChange={addNewEmployee} id="firstName" type="text" name="firstName" placeholder="First name" />
+            <label className="form-label">Last Name</label>
+            <input className="form-control" onChange={addNewEmployee} id="lastName" type="text" name="lastName" placeholder="Last name" />
+            <label className="form-label">Role ID</label>
+            <input className="form-control" onChange={addNewEmployee} id="roleId" type="number" name="roleId" placeholder="Role ID" />
+            <label className="form-label">Manager ID</label>
+            <input className="form-control" onChange={addNewEmployee} id="managerId" type="number" name="managerId" placeholder="Manager ID" />
+            <form onSubmit={this.handleSubmit}>
+              <label> New Employee: <input type="text" value={this.state.value} onChange={this.handleChange} /></label>
+            <input type="submit" value="Add New Employee" />
+            </form>
+            <button className='menu-buttons submit-btn' type='button' onClick={(e) => APIHelper.addNewData(e, "employee", "", employeeFormState, "", "")}>Submit Edit</button>
+            </div>
+          </form>
+        </div>
+      )
+    }
+    if (table === "roles") {
+      return (
+        <div>
+          <form>
+          <div className="mb-3">
+            <label className="form-label">Role ID</label>
+            <input className="form-control" onChange={addNewRole} id="id" type="number" name="id" placeholder="ID"></input>
+            <label className="form-label">Title</label>
+            <input className="form-control" onChange={addNewRole} id="title" type="text" name="title" placeholder="Title"></input>
+            <label className="form-label">Salary</label>
+            <input className="form-control" onChange={addNewRole} id="salary" type="number" name="salary" placeholder="Salary (number only)"></input>
+            <label className="form-label">Department ID</label>
+            <input className="form-control" onChange={addNewRole} id="deptId" type="number" name="deptId" placeholder="Department ID"></input>
+            <form onSubmit={this.handleSubmit}>
+              <label> New Roles: <input type="text" value={this.state.value} onChange={this.handleChange} /></label>
+            <input type="submit" value="Add New Role" />
+            </form>
+            <button className='menu-buttons submit-btn' type='submit' onClick={(e) => APIHelper.addNewData(e, "role", "", "", roleFormState, "")}>Submit Edit</button>
+            </div>
+          </form>
+        </div>
+      )
+    }
+    if (table === "item") {
+      return (
+        <div>
+          <form>
+          <div className="mb-3">
+          <label className="form-label">Menu Item ID</label>
+            <input className="form-control" onChange={addNewMenuItem} id="id" type="number" name="id" placeholder="ID" />
+            <label className="form-label">Item Name</label>
+            <input className="form-control" onChange={addNewMenuItem} id="name" type="text" name="name" placeholder="Name" />
+            <label className="form-label">Stock Count</label>
+            <input className="form-control" onChange={addNewMenuItem} id="stock" type="number" name="stock" placeholder="Stock" />
+            <label className="form-label">Item Price</label>
+            <input className="form-control" onChange={addNewMenuItem} id="price" type="number" name="price" placeholder="Price" />
+            <form onSubmit={this.handleSubmit}>
+              <label> New Menu Item: <input type="text" value={this.state.value} onChange={this.handleChange} /></label>
+            <input type="submit" value="Add New Menu Item" />
+            </form>
+            <button className='menu-buttons submit-btn' type='button' onClick={(e) => APIHelper.addNewData(e, "item", "", "", "", menuFormState)}>Submit Edit</button>
+            </div>
+          </form>
+        </div>
+      )
+    }
+  }
+
+  function handleChange (event) {
+    this.setState({value: e.target.value});
+  };
+
+  function handleSubmit (event) {
+    alert('New Data was Added: ' + this.state.value);
+    e.preventDefault();
+  };
+
+  // creates a new department
+  const addNewDepartment = (event) => {
+    const { name, value } = event.target;
+    setDepartmentFormState({
+      ...departmentFormState,
+      [name]: value,
+    });
+  };
+ // creates a new Employee
+  const addNewEmployee = (event) => {
+    const { name, value } = event.target;
+    setEmployeeFormState({
+      ...employeeFormState,
+      [name]: value,
+    });
+  };
+   // creates a new role
+   const addNewRole = (event) => {
+    const { name, value } = event.target;
+    setRoleFormState({
+      ...roleFormState,
+      [name]: value,
+    });
+  };
+   // creates a new menu item
+   const addNewMenuItem = (event) => {
+    const { name, value } = event.target;
+    setMenuFormState({
+      ...menuFormState,
+      [name]: value,
+    });
+  };
+
+  // creates a new employee
   function readSelect(e) {
     setOptionSelect(e.target.value)
   }

@@ -1,6 +1,112 @@
 
 
-class APIHealper {
+class APIHelper {
+    // api calls for all post methods
+    addNew(e, table, departmentFormState, employeeFormState, roleFormState, menuFormState) {
+        if (table === "dept") {
+            e.preventDefault()
+            let id = departmentFormState.id
+            let dept = departmentFormState.department
+            addDepartmentTable(id, dept)
+            function addDepartmentTable(id, dept) {
+                async function addDeptData(id, dept) {
+                    try {
+                        let data = await fetch(`http://localhost:3001/api/diner/departments`, {
+                            method: "POST",
+                            headers: { "Content-type": "application/json" },
+                            body: JSON.stringify({ id: id, dept: dept })
+                        }
+                        )
+                        return data.json()
+                    } catch {
+                        console.log("data failed to update department")
+                    }
+                }
+                addDeptData(id, dept)
+                    .catch((err) => console.log(err));
+                window.location.assign('/')
+            }
+        }
+        else if (table === "employee") {
+            e.preventDefault()
+            let id = employeeFormState.id
+            let first = employeeFormState.firstName
+            let last = employeeFormState.lastName
+            let roleId = employeeFormState.roleId
+            let managerId = employeeFormState.managerId
+            addEmployeeTable(id, first, last, roleId, managerId)
+            function addEmployeeTable(id, first, last, roleId, managerId) {
+                async function addEmployeeData(id, first, last, roleId, managerId) {
+                    try {
+                        let data = await fetch(`http://localhost:3001/api/diner/employees`, {
+                            method: "POST",
+                            headers: { "Content-type": "application/json" },
+                            body: JSON.stringify({ id: id, first: first, last: last, roleId: roleId, managerId: managerId })
+                        }
+                        )
+                        return data.json()
+                    } catch {
+                        console.log("data failed to update employees")
+                    }
+                }
+                addEmployeeData(id, first, last, roleId, managerId)
+                    .catch((err) => console.log(err));
+                window.location.assign('/')
+            }
+        }
+        else if (table === "role") {
+            e.preventDefault()
+            let id = roleFormState.id
+            let title = roleFormState.title
+            let salary = roleFormState.salary
+            let deptId = roleFormState.deptId
+            addRoleTable(id, title, salary, deptId)
+            function addRoleTable(id, title, salary, deptId) {
+                async function addRoleData(id, title, salary, deptId) {
+                    try {
+                        let data = await fetch(`http://localhost:3001/api/diner/roles`, {
+                            method: "POST",
+                            headers: { "Content-type": "application/json" },
+                            body: JSON.stringify({ id: id, title: title, salary: salary, deptId: deptId })
+                        }
+                        )
+                        return data.json()
+                    } catch {
+                        console.log("data failed to update roles")
+                    }
+                }
+                addRoleData(id, title, salary, deptId)
+                    .catch((err) => console.log(err));
+                window.location.assign('/')
+            }
+        }
+        else if (table === "item") {
+            e.preventDefault()
+            let id = menuFormState.id
+            let name = menuFormState.name
+            let stock = menuFormState.stock
+            let price = menuFormState.price
+            addMenuTable(id, name, stock, price)
+            function addMenuTable(id, name, stock, price) {
+                async function addMenuData(id, name, stock, price) {
+                    try {
+                        let data = await fetch(`http://localhost:3001/api/diner/menu`, {
+                            method: "POST",
+                            headers: { "Content-type": "application/json" },
+                            body: JSON.stringify({ id: id, name: name, stock: stock, price: price })
+                        }
+                        )
+                        return data.json()
+                    } catch {
+                        console.log("data failed to update menu")
+                    }
+                }
+                addMenuData(id, name, stock, price)
+                    .catch((err) => console.log(err));
+                window.location.assign('/')
+            }
+        }
+    }
     // api calls for all update methods
     editFormSubmit(e, table, departmentFormState, employeeFormState, roleFormState, menuFormState) {
         if (table === "dept") {
@@ -150,4 +256,4 @@ class APIHealper {
 
 
 }
-export default new APIHealper();
+export default new APIHelper();

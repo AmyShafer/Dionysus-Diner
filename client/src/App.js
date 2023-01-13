@@ -143,7 +143,7 @@ function App() {
             <label className="form-label">Department Name</label>
             <input className="form-control" onChange={addNewDepartment} id="department" type="text" name="department" placeholder="Department Name" />
             <form onSubmit={this.handleSubmit}>
-              <label> New Department: <input type="text" value={this.state.value} onChange={this.handleChange} /></label>
+              <label> New Department: <input type="text" value={this.state.value} onChange={addNewData} /></label>
             <input type="submit" value="Add New Department" />
             </form>
             <button className='menu-buttons submit-btn' type='submit' onClick={(e) => APIHelper.addNewData(e, "dept", departmentFormState, "", "", "")}>Submit Edit</button>
@@ -168,7 +168,7 @@ function App() {
             <label className="form-label">Manager ID</label>
             <input className="form-control" onChange={addNewEmployee} id="managerId" type="number" name="managerId" placeholder="Manager ID" />
             <form onSubmit={this.handleSubmit}>
-              <label> New Employee: <input type="text" value={this.state.value} onChange={this.handleChange} /></label>
+              <label> New Employee: <input type="text" value={this.state.value} onChange={addNewEmployee} /></label>
             <input type="submit" value="Add New Employee" />
             </form>
             <button className='menu-buttons submit-btn' type='button' onClick={(e) => APIHelper.addNewData(e, "employee", "", employeeFormState, "", "")}>Submit Edit</button>
@@ -190,12 +190,12 @@ function App() {
             <input className="form-control" onChange={addNewRole} id="salary" type="number" name="salary" placeholder="Salary (number only)"></input>
             <label className="form-label">Department ID</label>
             <input className="form-control" onChange={addNewRole} id="deptId" type="number" name="deptId" placeholder="Department ID"></input>
-            <form onSubmit={this.handleSubmit}>
-              <label> New Roles: <input type="text" value={this.state.value} onChange={this.handleChange} /></label>
-            <input type="submit" value="Add New Role" />
-            </form>
             <button className='menu-buttons submit-btn' type='submit' onClick={(e) => APIHelper.addNewData(e, "role", "", "", roleFormState, "")}>Submit Edit</button>
             </div>
+          </form>
+          <form className="form-body" onSubmit={this.handleSubmit}>
+              <label> New Roles: <input type="text" value={this.state.value} onChange={addNewRole} /></label>
+            <input type="submit" value="Add New Role" />
           </form>
         </div>
       )
@@ -213,8 +213,8 @@ function App() {
             <input className="form-control" onChange={addNewMenuItem} id="stock" type="number" name="stock" placeholder="Stock" />
             <label className="form-label">Item Price</label>
             <input className="form-control" onChange={addNewMenuItem} id="price" type="number" name="price" placeholder="Price" />
-            <form onSubmit={this.handleSubmit}>
-              <label> New Menu Item: <input type="text" value={this.state.value} onChange={this.handleChange} /></label>
+            <form className="form-body" onSubmit={this.handleSubmit}>
+              <label> New Menu Item: <input type="text" value={this.state.value} onChange={addNewMenuItem} /></label>
             <input type="submit" value="Add New Menu Item" />
             </form>
             <button className='menu-buttons submit-btn' type='button' onClick={(e) => APIHelper.addNewData(e, "item", "", "", "", menuFormState)}>Submit Edit</button>
@@ -226,12 +226,12 @@ function App() {
   }
 
   function handleChange (event) {
-    this.setState({value: e.target.value});
+    this.setState({value: event.target.value});
   };
 
   function handleSubmit (event) {
     alert('New Data was Added: ' + this.state.value);
-    e.preventDefault();
+    event.preventDefault();
   };
 
   // creates a new department
@@ -358,6 +358,7 @@ function App() {
                 <TableData row={row} key={Math.random() + 1} type={type} />
               ))}
             </Table>
+            {addNewData(type)}
           </div>
           : ''}
       </div>

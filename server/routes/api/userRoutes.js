@@ -30,13 +30,13 @@ router.route('/menuItem/:id').get(getMenuItem);
 // /api/diner/delete
 router.route('/delete').delete(removeEntry);
 // /api/diner/addEmployee
-router.route('/employees').post(addEmployee);
+router.route('/AddEmployees').post(addEmployee);
 // /api/diner/addDepartment
-router.route('/departments').post(addDepartment);
+router.route('/AddDepartments').post(addDepartment);
 // /api/diner/addRole
-router.route('/roles').post(addRole);
+router.route('/AddRoles').post(addRole);
 // /api/diner/addItem
-router.route('/items').post(addItem);
+router.route('/AddItems').post(addItem);
 // /api/diner/updateEmployee
 router.route('/employees').put(updateEmployee);
 // /api/diner/departments

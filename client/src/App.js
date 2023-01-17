@@ -338,7 +338,6 @@ function App() {
                 </Accordion.Item>
               </Accordion>
             </Table>
-            {addNewData(type)}
           </div>
           : ''}
       </div>

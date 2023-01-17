@@ -203,7 +203,7 @@ function App() {
       )
     }
   }
-
+  
   // creates a new department
   const addNewDepartment = (event) => {
     const { name, value } = event.target;
@@ -338,6 +338,7 @@ function App() {
                 </Accordion.Item>
               </Accordion>
             </Table>
+            {addNewData(type)}
           </div>
           : ''}
       </div>

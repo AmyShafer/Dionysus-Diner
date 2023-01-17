@@ -85,7 +85,7 @@ module.exports = {
   },
   addDepartment(req, res) {
     return new Promise((resolve, reject) => {
-      sql.query(`INSERT INTO departments (name) VALUES ("${req.name}")`, (err, results) => {
+      sql.query(`INSERT INTO departments (name) VALUES ("${req.body.dept}")`, (err, results) => {
         if (err) {
           reject(res.status(500).json(err))
         } else {
@@ -96,7 +96,7 @@ module.exports = {
   },
   addRole(req, res) {
     return new Promise((resolve, reject) => {
-      sql.query(`INSERT INTO roles (title, salary, department_id) VALUES ("${req.body.title}", "${req.body.salary}", "${req.body.departmentId}")`, (err, results) => {
+      sql.query(`INSERT INTO roles (title, salary, department_id) VALUES ("${req.body.title}", "${req.body.salary}", "${req.body.deptId}")`, (err, results) => {
         if (err) {
           reject(res.status(500).json(err))
         } else {
@@ -107,7 +107,7 @@ module.exports = {
   },
   addItem(req, res) {
     return new Promise((resolve, reject) => {
-      sql.query(`INSERT INTO item (name, stock, price, item_id) VALUES ("${req.body.name}", "${req.body.stock}", "${req.body.price}", "${req.body.itemId}")`, (err, results) => {
+      sql.query(`INSERT INTO item (name, stock, price, item_id) VALUES ("${req.body.name}", "${req.body.stock}", "${req.body.price}", "${req.body.id}")`, (err, results) => {
         if (err) {
           reject(res.status(500).json(err))
         } else {

@@ -5,16 +5,16 @@ class APIHelper {
     addNew(e, table, departmentFormState, employeeFormState, roleFormState, menuFormState) {
         if (table === "dept") {
             e.preventDefault()
-            let id = departmentFormState.id
             let dept = departmentFormState.department
-            addDepartmentTable(id, dept)
-            function addDepartmentTable(id, dept) {
-                async function addDeptData(id, dept) {
+            console.log(dept)
+            addDepartmentTable(dept)
+            function addDepartmentTable(dept) {
+                async function addDeptData(dept) {
                     try {
-                        let data = await fetch(`http://localhost:3001/api/diner/departments`, {
+                        let data = await fetch(`http://localhost:3001/api/diner/AddDepartments`, {
                             method: "POST",
                             headers: { "Content-type": "application/json" },
-                            body: JSON.stringify({ id: id, dept: dept })
+                            body: JSON.stringify({ dept: dept })
                         }
                         )
                         return data.json()
@@ -22,26 +22,25 @@ class APIHelper {
                         console.log("data failed to update department")
                     }
                 }
-                addDeptData(id, dept)
+                addDeptData(dept)
                     .catch((err) => console.log(err));
                 window.location.assign('/')
             }
         }
         else if (table === "employee") {
             e.preventDefault()
-            let id = employeeFormState.id
             let first = employeeFormState.firstName
             let last = employeeFormState.lastName
             let roleId = employeeFormState.roleId
             let managerId = employeeFormState.managerId
-            addEmployeeTable(id, first, last, roleId, managerId)
-            function addEmployeeTable(id, first, last, roleId, managerId) {
-                async function addEmployeeData(id, first, last, roleId, managerId) {
+            addEmployeeTable(first, last, roleId, managerId)
+            function addEmployeeTable(first, last, roleId, managerId) {
+                async function addEmployeeData(first, last, roleId, managerId) {
                     try {
-                        let data = await fetch(`http://localhost:3001/api/diner/employees`, {
+                        let data = await fetch(`http://localhost:3001/api/diner/AddEmployees`, {
                             method: "POST",
                             headers: { "Content-type": "application/json" },
-                            body: JSON.stringify({ id: id, first: first, last: last, roleId: roleId, managerId: managerId })
+                            body: JSON.stringify({ first: first, last: last, roleId: roleId, managerId: managerId })
                         }
                         )
                         return data.json()
@@ -49,25 +48,24 @@ class APIHelper {
                         console.log("data failed to update employees")
                     }
                 }
-                addEmployeeData(id, first, last, roleId, managerId)
+                addEmployeeData(first, last, roleId, managerId)
                     .catch((err) => console.log(err));
                 window.location.assign('/')
             }
         }
         else if (table === "role") {
             e.preventDefault()
-            let id = roleFormState.id
             let title = roleFormState.title
             let salary = roleFormState.salary
             let deptId = roleFormState.deptId
-            addRoleTable(id, title, salary, deptId)
-            function addRoleTable(id, title, salary, deptId) {
-                async function addRoleData(id, title, salary, deptId) {
+            addRoleTable(title, salary, deptId)
+            function addRoleTable(title, salary, deptId) {
+                async function addRoleData(title, salary, deptId) {
                     try {
-                        let data = await fetch(`http://localhost:3001/api/diner/roles`, {
+                        let data = await fetch(`http://localhost:3001/api/diner/AddRoles`, {
                             method: "POST",
                             headers: { "Content-type": "application/json" },
-                            body: JSON.stringify({ id: id, title: title, salary: salary, deptId: deptId })
+                            body: JSON.stringify({ title: title, salary: salary, deptId: deptId })
                         }
                         )
                         return data.json()
@@ -75,7 +73,7 @@ class APIHelper {
                         console.log("data failed to update roles")
                     }
                 }
-                addRoleData(id, title, salary, deptId)
+                addRoleData(title, salary, deptId)
                     .catch((err) => console.log(err));
                 window.location.assign('/')
             }
@@ -86,14 +84,14 @@ class APIHelper {
             let name = menuFormState.name
             let stock = menuFormState.stock
             let price = menuFormState.price
-            addMenuTable(id, name, stock, price)
-            function addMenuTable(id, name, stock, price) {
-                async function addMenuData(id, name, stock, price) {
+            addMenuTable(name, stock, price, id)
+            function addMenuTable(name, stock, price, id) {
+                async function addMenuData(name, stock, price, id) {
                     try {
-                        let data = await fetch(`http://localhost:3001/api/diner/menu`, {
+                        let data = await fetch(`http://localhost:3001/api/diner/AddItems`, {
                             method: "POST",
                             headers: { "Content-type": "application/json" },
-                            body: JSON.stringify({ id: id, name: name, stock: stock, price: price })
+                            body: JSON.stringify({ name: name, stock: stock, price: price, id: id })
                         }
                         )
                         return data.json()
@@ -101,7 +99,7 @@ class APIHelper {
                         console.log("data failed to update menu")
                     }
                 }
-                addMenuData(id, name, stock, price)
+                addMenuData(name, stock, price, id)
                     .catch((err) => console.log(err));
                 window.location.assign('/')
             }

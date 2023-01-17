@@ -128,3 +128,17 @@ body {
 .submit-btn:hover{
   color: #3c8aff;
 }
+.accordion-style{
+  width: 55%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  opacity: .85;
+}
+.accordion-header{
+  background-color: rgba(186, 182, 174, 0) !important;
+  border-color: rgba(186, 182, 174, 0) !important;
+}
+.accordion-button:not(.collapsed){
+  background-color: white !important;
+}

@@ -128,6 +128,7 @@ class APIHelper {
                 }
                 editDeptData(id, dept)
                     .catch((err) => console.log(err));
+                alert(`The selected department has been updated to ${dept}.`)
                 window.location.assign('/')
             }
         }
@@ -138,7 +139,7 @@ class APIHelper {
             let last = employeeFormState.lastName
             let roleId = employeeFormState.roleId
             let managerId = employeeFormState.managerId
-            editEmployeeTable(id, first, last, roleId, managerId)
+            editEmployeeTable(id, first, last, roleId, managerId) 
             function editEmployeeTable(id, first, last, roleId, managerId) {
                 async function editEmployeeData(id, first, last, roleId, managerId) {
                     try {
@@ -150,11 +151,12 @@ class APIHelper {
                         )
                         return data.json()
                     } catch {
-                        console.log("data failed to update employees")
+                        console.log("data failed to update employee");
                     }
                 }
                 editEmployeeData(id, first, last, roleId, managerId)
                     .catch((err) => console.log(err));
+                alert('The selected employee has been updated.')    
                 window.location.assign('/')
             }
         }
@@ -181,6 +183,7 @@ class APIHelper {
                 }
                 editRoleData(id, title, salary, deptId)
                     .catch((err) => console.log(err));
+                alert(`The selected role has been updated.`)
                 window.location.assign('/')
             }
         }
@@ -207,6 +210,7 @@ class APIHelper {
                 }
                 editMenuData(id, name, stock, price)
                     .catch((err) => console.log(err));
+                alert(`The selected menu item has been updated.`)
                 window.location.assign('/')
             }
         }
@@ -251,7 +255,6 @@ class APIHelper {
             )
         }
     }
-
-
 }
+
 export default new APIHelper();

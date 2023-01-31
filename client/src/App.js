@@ -157,9 +157,9 @@ function App() {
               <label className="form-label">Last Name</label>
               <input className="form-control" onChange={addNewEmployee} id="lastName" type="text" name="lastName" placeholder="Last name" />
               <label className="form-label">Role ID</label>
-              <input className="form-control" onChange={addNewEmployee} id="roleId" type="number" name="roleId" placeholder="Role ID" />
+              <input className="form-control" onChange={addNewEmployee} id="roleId" type="number" min="1" max="15" name="roleId" placeholder="Role ID" />
               <label className="form-label">Manager ID</label>
-              <input className="form-control" onChange={addNewEmployee} id="managerId" type="number" name="managerId" placeholder="Manager ID" />
+              <input className="form-control" onChange={addNewEmployee} id="managerId" type="number" min="1" max="30" name="managerId" placeholder="Manager ID" />
               <button className='menu-buttons submit-btn' type='button' onClick={(e) => APIHelper.addNew(e, "employee", "", employeeFormState, "", "")}>Add Item</button>
             </div>
           </form>
@@ -176,7 +176,7 @@ function App() {
               <label className="form-label">Salary</label>
               <input className="form-control" onChange={addNewRole} id="salary" type="number" name="salary" placeholder="Salary (number only)"></input>
               <label className="form-label">Department ID</label>
-              <input className="form-control" onChange={addNewRole} id="deptId" type="number" name="deptId" placeholder="Department ID"></input>
+              <input className="form-control" onChange={addNewRole} id="deptId" type="number" min="1" max="3" name="deptId" placeholder="Department ID"></input>
               <button className='menu-buttons submit-btn' type='submit' onClick={(e) => APIHelper.addNew(e, "role", "", "", roleFormState, "")}>Add Item</button>
             </div>
           </form>
@@ -195,7 +195,7 @@ function App() {
               <label className="form-label">Item Price</label>
               <input className="form-control" onChange={addNewMenuItem} id="price" type="number" name="price" placeholder="Price" />
               <label className="form-label">Menu Item ID Category</label>
-              <input className="form-control" onChange={addNewMenuItem} id="id" type="number" name="id" placeholder="1 : Appetizers, 2 : Main Course, 3 : Dessert, 4 : Alcohol" />
+              <input className="form-control" onChange={addNewMenuItem} id="id" type="number" min="1" max="4" name="id" placeholder="1 : Appetizers, 2 : Main Course, 3 : Dessert, 4 : Alcohol" />
               <button className='menu-buttons submit-btn' type='button' onClick={(e) => APIHelper.addNew(e, "item", "", "", "", menuFormState)}>Add Item</button>
             </div>
           </form>
@@ -272,6 +272,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => setData(data))
       .catch((err) => console.log(err));
+    console.log(data)
 
     editVisibility(dataType)
     switch (dataType) {

@@ -4,7 +4,7 @@ const apiRoutes = require('./api');
 router.use('/api', apiRoutes);
 
 router.use((req, res) => {
-  return res.send('Wrong route! Don\'t tell the chief!');
+  return res.send('Wrong route! Don\'t tell the chef!');
 });
 
 module.exports = router;

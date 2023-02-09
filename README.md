@@ -1,70 +1,34 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Dionysus Diner
 
-## Available Scripts
+Not everyone can dance and drink wine all day. As the busy restaurant owners, our clients needed a no-nonsense way to create, read, update, and delete all the needed information that keeps their business running with all of the OPA! and none of the oops! 
 
-In the project directory, you can run:
+## Table of contents
+* [Technologies](#technologies)
+* [Resources-used](#resources-used)
+* [Possible-improvements](#possible-improvements)
+* [Github-url](#github-url)
+* [Deployed-to-Render](#deployed-to-render)
 
-### `npm start`
+## Technologies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This application was built using React, JavaScript, HTML, and CSS.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Resources-used
 
-### `npm test`
+* For this project, creators needed to deploy from a different hosting service than usual. <a href="https://www.youtube.com/watch?v=MusIvEKjqsc" target="_blank"> This video</a> by Brad Traversy was helpful for picking a new provider. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* <a href="https://gist.github.com/bradtraversy/c831baaad44343cc945e76c2e30927b3" target="_blank"> This gist</a> was an invaluable reference for SQL commands.
 
-### `npm run build`
+## Possible-improvements
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In the future, the team would like to make edit components more intutive. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Github-url
+The Dionysus Diner repository is on <a href="https://github.com/AmyShafer/Dionysus-Diner" target="_blank_">GitHub.</a> 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deployed-to-Render
+The Dionysus Diner application is deployed on <a href="https://dionysus-diner.onrender.com" target="_blank_">Render.</a> 
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

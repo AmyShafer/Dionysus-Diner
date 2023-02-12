@@ -262,7 +262,7 @@ function App() {
     setType(dataType)
     async function fetchData() {
       try {
-        let data = await fetch(`http://localhost:3001/api/diner/${dataType}`);
+        let data = await fetch(`/api/diner/${dataType}`);
         return data
       } catch {
         console.log("data failed to load")
